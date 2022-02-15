@@ -1,0 +1,20 @@
+{
+  "name": "ebyrt_blitz",
+  "version": "1.0.0",
+  "description": "## Contexto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raph2ll/Ebyrt_blitz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raph2ll/Ebyrt_blitz/issues"
+  },
+  "homepage": "https://github.com/Raph2ll/Ebyrt_blitz#readme"
+}
