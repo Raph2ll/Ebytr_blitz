@@ -54,3 +54,41 @@ describe('1 - Crie um endpoint para criar tarefas', () => {
       })
     })
   })
+
+  describe('2 - Crie um endpoint para a listagem de tarefas', () => {
+    let connection;
+    let db;
+  
+    beforeAll(async () => {
+      connection = await MongoClient.connect(mongoDbUrl, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      db = connection.db('Ebyrt');
+    });
+  
+    beforeEach(async () => {
+      await db.collection('Ebyrt').deleteMany({});
+      const tasks = [
+        {
+          task: 'Levar o cachorro pra pasear',
+        },
+      ];
+      await db.collection('Ebyrt').insertMany(tasks);
+    });
+  
+    afterAll(async () => {
+      await connection.close();
+    });
+  
+    it('Será validado que é possível listar todas as tarefas', async () => {
+      await frisby
+        .get(`${url}/tasks/`)
+        .expect('status', statusCodes.OK)
+        .then((response) => {
+          const { body } = response;
+          const result = JSON.parse(body);
+          expect(result[0].task).toBe('Levar o cachorro pra pasear');
+        });
+    });
+  })
