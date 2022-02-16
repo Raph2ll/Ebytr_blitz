@@ -38,4 +38,18 @@ describe('1 - Crie um endpoint para criar tarefas', () => {
         expect(result.message).toBe('Invalid entries. Try again.');
       })
     })
+
+  it('Será validado que é possível criar uma tarefa', async () => {
+    await frisby
+      .post(`${url}/tasks/`,
+        {
+          task: '',
+        })
+      .expect('status', 400)
+      .then((response) => {
+        const { body } = response;
+        const result = JSON.parse(body);
+        expect(result.message).toBe('Invalid entries. Try again.');
+      })
+    })
   })
