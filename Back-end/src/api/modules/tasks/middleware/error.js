@@ -4,6 +4,13 @@ const invalidEntries = {
   },
 };
 
+const notFound = {
+  err: {
+    message: 'task not found',
+  },
+};
+
 module.exports = {
   invalidEntries,
+  notFound,
 };
