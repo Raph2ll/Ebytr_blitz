@@ -27,7 +27,7 @@ describe('1 - Crie um endpoint para criar tarefas', () => {
 
   it('Será validado que não é possível criar uma tarefa sem o campo "task"', async () => {
     await frisby
-      .post(`${url}/task/`,
+      .post(`${url}/tasks/`,
         {
           task: '',
         })
