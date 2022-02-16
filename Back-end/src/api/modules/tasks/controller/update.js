@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
 
     const result = await service({ id, task });
 
-      if (result.err) return res.status(statusCodes.BAD_REQUEST).json(result.err);
+      if (result.err) return res.status(statusCodes.NOT_FOUND).json(result.err);
 
     return res.status(statusCodes.OK).json(result);
   } catch (err) {
