@@ -1,3 +1,4 @@
+const statusCodes = require('http-status-codes').StatusCodes;
 const frisby = require('frisby');
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
@@ -31,7 +32,7 @@ describe('1 - Crie um endpoint para criar tarefas', () => {
         {
           task: '',
         })
-      .expect('status', 400)
+      .expect('status', statusCodes.BAD_REQUEST)
       .then((response) => {
         const { body } = response;
         const result = JSON.parse(body);
@@ -43,13 +44,13 @@ describe('1 - Crie um endpoint para criar tarefas', () => {
     await frisby
       .post(`${url}/tasks/`,
         {
-          task: '',
+          task: 'Beber água',
         })
-      .expect('status', 400)
+      .expect('status', statusCodes.CREATED)
       .then((response) => {
         const { body } = response;
         const result = JSON.parse(body);
-        expect(result.message).toBe('Invalid entries. Try again.');
+        expect(result.task).toBe('Beber água');
       })
     })
   })
