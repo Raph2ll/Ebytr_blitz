@@ -1,4 +1,4 @@
-# Boas vindas ao repositório do processo seletivo Ebyrt
+# Boas vindas ao repositório do processo seletivo Ebytr
 
 ## Contexto
 
