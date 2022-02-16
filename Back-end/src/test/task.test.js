@@ -222,3 +222,58 @@ describe('4 - Crie um endpoint para a edição de uma tarefa', () => {
       });
   });
 });
+
+describe('5 - Crie um endpoint para remove de uma tarefa', () => {
+  let connection;
+  let db;
+
+  beforeAll(async () => {
+    connection = await MongoClient.connect(mongoDbUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    db = connection.db('Ebyrt');
+  });
+
+  beforeEach(async () => {
+    await db.collection('Ebyrt').deleteMany({});
+  });
+
+  afterAll(async () => {
+    await connection.close();
+  });
+
+
+  it('Será validado que é possível remover uma tarefa', async () => {
+    let resultTask;
+
+    await frisby
+      .post(`${url}/tasks`, {
+        task: 'Comer vegetais',
+      },)
+      .expect('status', statusCodes.CREATED)
+      .then((response) => {
+        const { body } = response;
+        resultTask = JSON.parse(body);
+      });
+
+    return frisby
+      .delete(`${url}/tasks/${resultTask._id}`)
+      .expect('status', statusCodes.NO_CONTENT)
+      .then((responseTasks) => {
+        const { body } = responseTasks;
+        expect(body).toBe("");
+      });
+  });
+
+  it('Será validado que não é possível remover uma tarefa que não existe', async () => {
+
+    return frisby
+      .delete(`${url}/tasks/9999`)
+      .expect('status', statusCodes.NOT_FOUND)
+      .then((response) => {
+        const { json } = response;
+        expect(json.message).toBe('task not found');
+      });
+  });
+});
