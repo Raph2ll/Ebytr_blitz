@@ -87,13 +87,14 @@ Cria uma tarefa
 
 ```Json
 {
-	"_id": "620d8fd26b483949c661132b",
-	"task": "Fazer atividades físicas",
-	"date": "16-02-2022 20:29:07"
+  "_id": "620d8fd26b483949c661132b",
+  "task": "Fazer atividades físicas",
+  "date": "16-02-2022 20:29:07"
 }
 ```
 Retorno
 
+---
 
 * **[GET]** ./tasks
 
@@ -120,14 +121,16 @@ Retorno
   "date": "16-02-2022 20:29:07"
  }
  {
-	"_id": "620d8fd26b483949c661132b",
-	"task": "Fazer atividades físicas",
-	"date": "16-02-2022 20:29:07"
+  "_id": "620d8fd26b483949c661132b",
+  "task": "Fazer atividades físicas",
+  "date": "16-02-2022 20:29:07"
 }
 ]
 ```
 
 Lista todas as tarefas
+
+---
 
 * **[GET]** ./tasks:id
 
@@ -139,35 +142,39 @@ Lista uma tarefa por id
 
 ```Json
 {
-	"_id": "620d88e26b483949c6611329",
-	"task": "Beber água",
-	"date": "16-02-2022 20:29:07"
+  "_id": "620d88e26b483949c6611329",
+  "task": "Beber água",
+  "date": "16-02-2022 20:29:07"
 }
 ```
 
 Retorno
 
+---
 
 * **[PUT]** ./tasks:id
 
 ```Json
 http://localhost:3001/tasks/620d88ec6b483949c661132a
 {
-	"task": "Jogar LOL"
+  "task": "Jogar LOL"
 }
+
 ```
 
 Altera uma tarefa
 
 ```Json
 {
-	"_id": "620d88ec6b483949c661132a",
-	"task": "Jogar LOL",
-	"date": "16-02-2022 20:29:07"
+  "_id": "620d88ec6b483949c661132a",
+  "task": "Jogar LOL",
+  "date": "16-02-2022 20:29:07"
 }
 ```
 
 Retorno
+
+---
 
 * **[DELETE]** ./tasks:id
 
@@ -176,6 +183,8 @@ http://localhost:3001/tasks/620d88ec6b483949c661132a
 ```
 
 Deleta uma tarefa
+
+---
 
 ## Próximos passos
 
