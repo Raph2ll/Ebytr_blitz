@@ -2,9 +2,9 @@ const { ObjectId } = require('mongodb');
 const { format } = require('date-fns');
 const connection = require('../../global/model/connection');
 
-const timestamp = format(new Date(), 'dd-MM-yyy HH:mm:ss');
 
 const update = async ({ id, task }) => {
+  const timestamp = format(new Date(), 'dd-MM-yyy HH:mm:ss');
   if (!ObjectId.isValid(id)) {
     return null;
   }
